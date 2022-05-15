@@ -163,7 +163,10 @@ export default {
   methods: {
     emitCarousel(index) {
       this.carouselModel = index;
-      this.currentPrice = this.product.product_options[index].price;
+      this.currentPrice = this.product.product_options[index].is_discount
+        ? this.product.product_options[index].discount_price
+        : this.product.product_options[index].price;
+
       this.optionStock = this.product.product_options[index].in_stock;
       // selected option values
       this.selectedOption.id = index;
